@@ -36,5 +36,35 @@ class Paciente:
         if enfermedad in self.historial_enfermedades:
             self.historial_enfermedades.remove(enfermedad)
 
+    def buscardiagnostico(self,diagonostico,index = 0):
+        listakeys = []
+        listakeys += self.historial_enfermedades
+        listakeys += list(self.consultas.keys())
+        if index >= len(listakeys):
+            return False
+        elif listakeys[index] == diagonostico:
+            return True
+        else:
+            return self.buscardiagnostico(diagonostico,index + 1)
+
+    def buscartratamiento(self,tratamiento,index = 0):
+        listavalues = []
+        listavalues += self.medicamentos
+        stop = len(listavalues)
+        listavalues += list(self.consultas.values())
+        if index >= len(listavalues):
+            return False
+        else:
+            if index < stop:
+                if listavalues[index] == tratamiento:
+                    return True
+                else:
+                    return self.buscartratamiento(tratamiento,index + 1)
+            else:
+                if listavalues[index]["tratamiento"] == tratamiento:
+                    return True
+                else:
+                    return self.buscartratamiento(tratamiento,index + 1) 
+                
     def __str__(self):
         return f"Paciente({self.id_paciente}): {self.nombre}, Edad: {self.edad}, Enfermedades: {self.historial_enfermedades}, Medicamentos: {self.medicamentos}"
