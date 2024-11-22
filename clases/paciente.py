@@ -8,14 +8,37 @@ class Paciente:
         self.medicamentos = medicamentos or []
         self.consultas = {}
 
-    def agregar_consulta(self,fecha,consulta,diagnostico,tratamiento):
-        diagnosticostr = str(diagnostico) 
-        diagnosticostr ={}
-        diagnosticostr["fecha"]= fecha
-        diagnosticostr["consulta"]= consulta
-        diagnosticostr["diagnostico"]= diagnostico
-        diagnosticostr["tratamiento"]= tratamiento
-        self.consultas[str(diagnostico)] = diagnosticostr
+        def agregar_consulta(self,fecha,consulta,diagnostico,tratamiento):
+            for element in self.historial_enfermedades:
+                if element == diagnostico:
+                    diagnosticostr = str(diagnostico) 
+                    diagnosticostr ={}
+                    diagnosticostr["fecha"] = str(fecha)
+                    diagnosticostr["consulta"] = consulta
+                    diagnosticostr["diagnostico"]= diagnostico
+                    diagnosticostr["tratamiento"]= tratamiento
+                    diagnosticostr["historial"] = True
+                    self.consultas[str(diagnostico)] = diagnosticostr
+                    return
+                
+            if self.buscardiagnostico(diagnostico):
+                antf = [self.consultas[str(diagnostico)]["fecha"]] + [str(fecha)]
+                antc = [self.consultas[str(diagnostico)]["consulta"]] + [str(consulta)]
+                antt = [self.consultas[str(diagnostico)]["tratamiento"]] + [str(tratamiento)]
+                self.consultas[str(diagnostico)]["historial"] = True
+                self.consultas[str(diagnostico)]["fecha"] = antf
+                self.consultas[str(diagnostico)]["consulta"] = antc
+                self.consultas[str(diagnostico)]["tratamiento"] = antt
+            
+            else:
+                diagnosticostr = str(diagnostico) 
+                diagnosticostr ={}
+                diagnosticostr["fecha"]= fecha
+                diagnosticostr["consulta"]= consulta
+                diagnosticostr["diagnostico"]= diagnostico
+                diagnosticostr["tratamiento"]= tratamiento
+                diagnosticostr["historial"] = False
+                self.consultas[str(diagnostico)] = diagnosticostr
 
     def agregar_enfermedad(self, enfermedad):
         self.historial_enfermedades.append(enfermedad)
@@ -61,10 +84,17 @@ class Paciente:
                 else:
                     return self.buscartratamiento(tratamiento,index + 1)
             else:
-                if listavalues[index]["tratamiento"] == tratamiento:
-                    return True
+                if listavalues[index]["historial"]:
+                    listratam = listavalues[index]["tratamiento"]
+                    for element in listratam:
+                        if element == tratamiento:
+                            return True
+                    return self.buscartratamiento(tratamiento,index + 1)
                 else:
-                    return self.buscartratamiento(tratamiento,index + 1) 
+                    if listavalues[index]["tratamiento"] == tratamiento:
+                        return True
+                    else:
+                        return self.buscartratamiento(tratamiento,index + 1) 
                 
     def __str__(self):
         return f"Paciente({self.id_paciente}): {self.nombre}, Edad: {self.edad}, Enfermedades: {self.historial_enfermedades}, Medicamentos: {self.medicamentos}"
