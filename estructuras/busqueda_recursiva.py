@@ -1,4 +1,4 @@
-from clases.paciente import Historia
+from clases.historia import Historia
 
 def buscar_en_historial(historial:list[Historia], keyword:str, index:int=0):
     if index >= len(historial):  # Caso base: fin de la lista
