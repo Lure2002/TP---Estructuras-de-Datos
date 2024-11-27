@@ -5,15 +5,15 @@ Bienvenidos a nuestro proyecto de **Análisis y Gestión de Datos Médicos** par
 **📆 Curso**: II Cuatrimestre 2024
 
 **💼 Integrantes**:
-- [Juan Ignacio Diaz](#)
-- [Lucas Marcelo Contreras](#)
-- [Martin Bahl](#)
+- [Juan Ignacio Diaz](https://github.com/JuanIDiaz00)
+- [Lucas Marcelo Contreras](https://github.com/Lure2002)
+- [Martin Bahl](https://github.com/BahlMartin)
 
-**🔧 Lenguaje**: Python (of course! 🐍)
+**🔧 Lenguaje**: Python (_of course! 🐍_)
 
 ## 🩺 Descripción del Proyecto
 
-Este proyecto consiste en diseñar y desarrollar un sistema que permita **gestionar y analizar datos médicos** mediante estructuras de datos avanzadas. Imagina una clínica digital donde podemos almacenar, organizar y optimizar el acceso a la información de los pacientes, gestionando desde su historial clínico hasta la red de hospitales más cercana para un traslado rápido.
+Este proyecto consiste en diseñar y desarrollar un sistema que permita **gestionar y analizar datos médicos** mediante estructuras de datos avanzadas. Imaginá una clínica digital donde podemos almacenar, organizar y optimizar el acceso a la información de los pacientes, gestionando desde su historial clínico hasta la red de hospitales más cercana para un traslado rápido.
 
 ## 🛠️ Estructura del Proyecto
 
@@ -42,16 +42,16 @@ Nuestro proyecto se divide en dos partes principales:
 
 ## 🚀 Cómo Empezar
 
-1. **Clona este Repositorio**:
+1. **Cloná este Repositorio**:
    ```bash
    git clone https://github.com/usuario/analisis-datos-medicos.git
    cd analisis-datos-medicos
    ```
 
-2. **Instala las Dependencias**:
+2. **Instalá las Dependencias**:
    > Este proyecto solo necesita Python 3.8+ y algunos paquetes estándar como `heapq`, que vienen incluidos. Easy-peasy. 🍋
 
-3. **Ejecuta el Código**:
+3. **Ejecutá el Código**:
    ```bash
    python main.py
    ```
@@ -133,13 +133,13 @@ print("Distancia más corta a cada hospital:", distancias)
 
 ## 🤝 Contribuciones
 
-¿Te gustaría aportar alguna mejora o nueva funcionalidad? ¡Eres más que bienvenido/a! Simplemente haz un fork, crea una branch nueva y manda un pull request. 🙌
+¿Te gustaría aportar alguna mejora o nueva funcionalidad? ¡Sos más que bienvenido/a! Simplemente hace un fork, creá una branch nueva y enviá un pull request. 🙌
 
 ---
 
 ## 🧠 Reflexión Final
 
-El uso de estructuras de datos eficientes nos permite optimizar el procesamiento de información médica. En este proyecto, cada decisión de diseño ha sido cuidadosamente pensada para lograr una herramienta robusta y escalable en un área tan crucial como la salud.
+El uso de estructuras de datos eficientes nos permite optimizar el procesamiento de información médica. En este proyecto, cada decisión de diseño ha sido cuidadosamente pensada para lograr una herramienta robusta y escalable en un área tan crucial como lo es la salud.
 
 --- 
 
