@@ -40,6 +40,9 @@ class Paciente:
                 diagnosticostr["historial"] = False
                 self.consultas[str(diagnostico)] = diagnosticostr
 
+    def retornarid(self):
+        return self.id_paciente
+
     def agregar_enfermedad(self, enfermedad):
         self.historial_enfermedades.append(enfermedad)
 
