@@ -1,6 +1,6 @@
 #Iniciando el TP
 from datetime import date
-from clases import Hospital
+from clases.Hospital import Hospital
 hospital = Hospital()  # Crea una instancia de la clase Hospital
 while True:
     print("\n--- Menú ---")
@@ -145,7 +145,7 @@ while True:
           hospital.imprimirarbolbi()
     elif opcion == 14:  # Mostrar historial de paciente
         id_paciente = int(input("Ingrese el ID del paciente: "))
-        hospital.mostrarhisto(id_paciente)
+        hospital. mostrar_historial_paciente(id_paciente)
     elif opcion == 15:  # Salir
           break  # Sale del bucle principal
     else:  # Opción inválida

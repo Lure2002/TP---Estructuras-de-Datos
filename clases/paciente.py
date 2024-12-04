@@ -1,5 +1,5 @@
 from datetime import date
-import ArbolGeneral
+from clases.ArbolGeneral import Arbol_General
 class Paciente:
     def __init__(self, id_paciente, nombre, fechadenacimiento, sexo,historial_enfermedades=None, medicamentos=None):
         self.id_paciente = int(id_paciente)
@@ -8,7 +8,7 @@ class Paciente:
         self.sexo = str(sexo)
         self.historial_enfermedades = historial_enfermedades or []
         self.medicamentos = medicamentos or []
-        self.consultas = ArbolGeneral(id_paciente)
+        self.consultas = Arbol_General(id_paciente)
 
     def agregarcosulta (self,consulta,diagnostico,tratamiento,medicamentos=None):#medicamento es lista el resto str
               trar = {}
@@ -18,11 +18,11 @@ class Paciente:
               trar["medicamento"] = medicamentos or []
               if self.buscardiagnostico(diagnostico) is True:
                 tupla = (date.today(),trar)
-                ArbolGeneral.agregar_hijo_nodo(self.consultas,diagnostico,tupla)
+                Arbol_General.agregar_hijo_nodo(self.consultas,diagnostico,tupla)
               else:
-                ArbolGeneral.agregar_nodo(self.consultas,diagnostico)
+                Arbol_General.agregar_nodo(self.consultas,diagnostico)
                 tupla = (date.today(),trar)
-                ArbolGeneral.agregar_hijo_nodo(self.consultas,diagnostico,tupla)
+                Arbol_General.agregar_hijo_nodo(self.consultas,diagnostico,tupla)
     def hijoarbol(self):
         return self.consultas.retornarhijos()
     def retornarid(self):
@@ -74,7 +74,7 @@ class Paciente:
         print(f"antecedentes de enfermedades", self.historial_enfermedades)
         print(f"medicamentos que toma el paciente", self.medicamentos)
         print(f"historial de consultas")
-        ArbolGeneral.imprimir_consultas_recursivo(self.consultas)
+        Arbol_General.imprimir_consultas_recursivo(self.consultas)
 
       
     def buscardiagnostico(self,diagnostico,nodo = None,rep = None ):

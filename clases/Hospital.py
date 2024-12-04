@@ -1,6 +1,6 @@
-import paciente
-import NodoArbolBinario
-import Heap
+from clases.paciente  import Paciente
+from clases.NodoArbolBinario import NodoArbolBinario
+from clases.Heap import Heap
 from datetime import date
 class Hospital:
     def __init__(self):
@@ -12,7 +12,7 @@ class Hospital:
         if self.buscarpaciente(id_paciente) is not None:
             return "El paciente ya existe."
         else:
-          num = paciente(id_paciente, nombre, fechanac, sexo,historial_enfermedades, medicamentos)
+          num = Paciente(id_paciente, nombre, fechanac, sexo,historial_enfermedades, medicamentos)
           self.pacientes[id_paciente] = num
           self.arbol()
           return "El paciente se agrego con exito"
@@ -41,7 +41,7 @@ class Hospital:
           gravedad = 0
         existe = self.buscarpaciente(id_paciente)
         if existe is  None:
-          num = paciente(id_paciente, nombre, fechanac , sexo,historial_enfermedades, medicamentos)
+          num = Paciente(id_paciente, nombre, fechanac , sexo,historial_enfermedades, medicamentos)
           self.pacientes[id_paciente] = num
           self.arbol()
           tupla = (gravedad,num)
