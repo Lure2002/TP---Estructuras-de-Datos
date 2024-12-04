@@ -1,7 +1,9 @@
 #Iniciando el TP
 from datetime import date
 from clases.Hospital import Hospital
+from clases.Red_Hospitales import Red_Hospitales
 hospital = Hospital()  # Crea una instancia de la clase Hospital
+'''
 while True:
     print("\n--- Menú ---")
     print("1. Agregar paciente")
@@ -150,3 +152,80 @@ while True:
           break  # Sale del bucle principal
     else:  # Opción inválida
         print("Opción inválida. Por favor, ingrese una opción válida.")
+'''
+
+import random
+
+# Define a list of names
+names = ["Juan", "Maria", "Pedro", "Ana", "Luis", "Sofia", "Miguel", "Laura", "Carlos", "Isabel"]
+
+# Define a list of sexes
+sexes = ["masculino", "femenino","x"]
+
+guardia=["grave","moderado","no_urgente"]
+
+enfermedades_hereditarias = ["Fibrosis quística","Hemofilia","Enfermedad de Huntington","Distrofia muscular de Duchenne","Síndrome de Down" ]
+# Loop to create and add 100 patients
+for i in range(1, 10):  # IDs from 5 to 104
+    name = random.choice(names)  # Randomly select a name
+    age = random.randint(1, 90)  # Random age between 1 and 100
+    sex = random.choice(sexes)  # Randomly select sex
+    #print(f"Creating patient {i}: Name: {name}, Age: {age}, Sex: {sex}")
+    hospital.agregarpaciente(i, name,date(2024,12,i) , sex, enfermedades_hereditarias)  # Add the patient to the hospital
+
+
+
+for i in range(8, 15):  # IDs from 5 to 104
+    name = random.choice(names)  # Randomly select a name
+    age = random.randint(1, 90)  # Random age between 1 and 100
+    sex = random.choice(sexes)  # Randomly select sex
+    g = random.choice(guardia)
+    #print(f"Creating patient {i}: Name: {name}, Age: {age}, Sex: {sex}, guardia:{g}")
+    hospital.agregarpacienteguardia(i, name, date(2024,1,i), enfermedades_hereditarias,["agua"],g)  # Add the patient to the hospital
+
+diseases = ["Gripe", "Diabetes", "Hipertensión", "Asma", "Alergia", "Gastritis", "Migraña"]
+treatments = ["Reposo", "Dieta", "Medicación", "Fisioterapia", "Inhalador", "Antihistamínicos"]
+medications = ["Paracetamol", "Insulina", "Ibuprofeno", "Amoxicilina", "Loratadina"]
+
+
+# Loop to create 10 consultas
+for i in range(10):
+    disease = random.choice(diseases)
+    treatment = random.choice(treatments)
+    medication = random.choice(medications)
+    medication2 = random.choice(medications)
+    fecha = f"2023-11-{i+1}"  # Example date format
+    consulta = f"Consulta por {disease}"  # Example consultation description
+    #print(i,disease,treatment,medication,medication2)
+    # Call agregar_consulta method
+    hospital.agregar_consulta(i,consulta,disease,treatment,[medication,medication2])
+
+
+hospital.buscarpaciente(1)
+hospital.buscarpaciente(5)
+hospital.mostrarguardia()
+hospital.imprimirarbolbi()
+hospital.eliminarpacienteguardiaatendido()
+hospital.mostrarguardia()
+hospital. mostrar_historial_paciente(1)
+
+red = Red_Hospitales()
+red.agregar_hospital("A")
+red.agregar_hospital("B")
+red.agregar_hospital("C")
+red.agregar_hospital("D")
+red.agregar_distancia("A", "B", 5)
+red.agregar_distancia("A", "C", 7)
+red.agregar_distancia("B","D",8)
+red.agregar_distancia("C","D",2)
+red.agregar_hospital("E")
+red.agregar_hospital("F")
+red.agregar_distancia("D","E",20)
+red.agregar_distancia("D","F",27)
+
+
+red.imprimirgrafo()
+# Realizar recorridos DFS y BFS desde el nodo 'A'
+print("Recorrido DFS desde 'A':", red.dfs('A'))
+print("Recorrido BFS desde 'A':", red.bfs('A'))
+distancia = red.dijkstra('A','E')
