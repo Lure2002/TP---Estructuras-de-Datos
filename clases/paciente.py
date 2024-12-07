@@ -1,5 +1,5 @@
 from datetime import date
-from clases.ArbolGeneral import Arbol_General
+from clases.ArbolGeneral import Arbol_General, agregar_hijo_nodo, arbol_vacio, agregar_nodo, imprimir_consultas_recursivo
 class Paciente:
     def __init__(self, id_paciente, nombre, fechadenacimiento, sexo,historial_enfermedades=None, medicamentos=None):
         self.id_paciente = int(id_paciente)
@@ -18,11 +18,11 @@ class Paciente:
               trar["medicamento"] = medicamentos or []
               if self.buscardiagnostico(diagnostico) is True:
                 tupla = (date.today(),trar)
-                Arbol_General.agregar_hijo_nodo(self.consultas,diagnostico,tupla)
+                agregar_hijo_nodo(self.consultas,diagnostico,tupla)
               else:
-                Arbol_General.agregar_nodo(self.consultas,diagnostico)
+                agregar_nodo(self.consultas,diagnostico)
                 tupla = (date.today(),trar)
-                Arbol_General.agregar_hijo_nodo(self.consultas,diagnostico,tupla)
+                agregar_hijo_nodo(self.consultas,diagnostico,tupla)
     def hijoarbol(self):
         return self.consultas.retornarhijos()
     def retornarid(self):
@@ -74,7 +74,7 @@ class Paciente:
         print(f"antecedentes de enfermedades", self.historial_enfermedades)
         print(f"medicamentos que toma el paciente", self.medicamentos)
         print(f"historial de consultas")
-        Arbol_General.imprimir_consultas_recursivo(self.consultas)
+        imprimir_consultas_recursivo(self.consultas)
 
       
     def buscardiagnostico(self,diagnostico,nodo = None,rep = None ):
